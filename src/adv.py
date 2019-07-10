@@ -53,14 +53,9 @@ player = Player("Frank", room["outside"])
 # If the user enters "q", quit the game.
 while True:
     print(
-        f"Greetings {player.name}! Welcome to the {player.current_room.name}, {player.current_room.description}")
+        f"Greetings {player.name}! Welcome to the {player.current_room.name},\n{player.current_room.description}")
     user_input = input(
         f"{player.name}, so while your here what action do you choose to embark on your journy? \n")
-    if(user_input == "n"):
-        print("going north")
-    elif(user_input == "e"):
-        print("going east")
-    elif(user_input == "s"):
-        print("going south")
-    elif(user_input == "w"):
-        print("going west")
+
+    if (user_input == "n" or user_input == "s" or user_input == "w" or user_input == "e"):
+        player.move_to(user_input)
