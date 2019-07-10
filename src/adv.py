@@ -51,11 +51,20 @@ player = Player("Frank", room["outside"])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+start = True
 while True:
-    print(
-        f"Greetings {player.name}! Welcome to the {player.current_room.name},\n{player.current_room.description}")
-    user_input = input(
-        f"{player.name}, so while your here what action do you choose to embark on your journy? \n")
+
+    if(start):
+        start = False
+        print(
+            f"\nGreetings {player.name}! Welcome to the {player.current_room.name},\n\n{player.current_room.description}\n")
+        user_input = input(
+            f"{player.name}, so while your here what action do you choose to embark on your journy? \n")
+    else:
+        print(f"\n\nYou have entered the {player.current_room.name} room\n")
+        print(f"{player.current_room.description}\n")
+        user_input = input(
+            f"Alright {player.name} where do you want to go next?\nChoose wisely because it might be your last.\n")
 
     if (user_input == "n" or user_input == "s" or user_input == "w" or user_input == "e"):
         player.move_to(user_input)

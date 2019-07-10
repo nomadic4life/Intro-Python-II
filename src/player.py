@@ -18,4 +18,3 @@ class Player:
             self.current_room = self.current_room.w_to
         else:
             print("no room in that direciton please try again")
-        print(f"\nYou have entered the {self.current_room.name} room\n")
