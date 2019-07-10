@@ -54,5 +54,13 @@ player = Player("Frank", room["outside"])
 while True:
     print(
         f"Greetings {player.name}! Welcome to the {player.current_room.name}, {player.current_room.description}")
-    user_input = input("press something. no idea what though:\n")
-    print(user_input)
+    user_input = input(
+        f"{player.name}, so while your here what action do you choose to embark on your journy? \n")
+    if(user_input == "n"):
+        print("going north")
+    elif(user_input == "e"):
+        print("going east")
+    elif(user_input == "s"):
+        print("going south")
+    elif(user_input == "w"):
+        print("going west")
