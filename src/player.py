@@ -17,4 +17,4 @@ class Player:
         elif(location == "w" and self.current_room.w_to != None):
             self.current_room = self.current_room.w_to
         else:
-            print("no room in that direciton please try again")
+            print(f"{self.name} looks like you can't go in that direction for some reason. not like there is some secret hidden room there.")

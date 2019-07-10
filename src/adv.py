@@ -59,12 +59,16 @@ while True:
         print(
             f"\nGreetings {player.name}! Welcome to the {player.current_room.name},\n\n{player.current_room.description}\n")
         user_input = input(
-            f"{player.name}, so while your here what action do you choose to embark on your journy? \n")
+            f"{player.name}, so while your here what action do you choose to embark on your journy? \n>>> ")
     else:
         print(f"\n\nYou have entered the {player.current_room.name} room\n")
         print(f"{player.current_room.description}\n")
         user_input = input(
-            f"Alright {player.name} where do you want to go next?\nChoose wisely because it might be your last.\n")
+            f"Alright {player.name} where do you want to go next?\nChoose wisely because it might be your last.\n>>> ")
 
     if (user_input == "n" or user_input == "s" or user_input == "w" or user_input == "e"):
         player.move_to(user_input)
+    elif(user_input == "q"):
+        exit()
+    else:
+        print(">  not sure what you are tring to do with that command but you probably want to choose a better command that makes sense\n>  hint: w go west, e go east, n go north, and s go south, or q to just give up.")
