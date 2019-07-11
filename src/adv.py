@@ -57,35 +57,10 @@ game = Game(player, room["outside"])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
 start = True
 while True:
-
-    # user_input = input("press n, w, e, s \n")
-    # game.command(input("press n, w, e, s \n"))
-    # player.move_to(command_options[user_input])
-
-    # print(command_options[incoming])
-
-    if(start):
-        start = False
-        print(
-            f"\nGreetings {player.name}! Welcome to the {player.current_room.name},\n\n{player.current_room.description}\n")
-        user_input = input(
-            f"{player.name}, so while your here what action do you choose to embark on your journy? \n>>> ")
-    else:
-        print(f"\n\nYou have entered the {player.current_room.name} room\n")
-        print(f"{player.current_room.description}\n")
-        user_input = input(
-            f"Alright {player.name} where do you want to go next?\nChoose wisely because it might be your last.\n>>> ")
+    game.game_prompt()
+    user_input = input(f"\n>>> ")
 
     game.command(user_input)
-
-    # if (user_input == "n" or user_input == "s" or user_input == "w" or user_input == "e"):
-    #     player.move_to(user_input)
-    # elif(user_input == "q"):
-    #     exit()
-    # elif(user_input == "i"):
-    #     print(
-    #         f"items in {player.current_room.name} {player.current_room.items}")
-    # else:
-    #     print(">  not sure what you are tring to do with that command but you probably want to choose a better command that makes sense\n>  hint: w go west, e go east, n go north, and s go south, or q to just give up.")

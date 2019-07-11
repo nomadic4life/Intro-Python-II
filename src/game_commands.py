@@ -40,6 +40,9 @@ class Game:
     def invalid_input(self, user_input):
         print(f"{user_input} is an invalid input")
 
+    def game_prompt(self):
+        self.player.dialog()
+
     def __command_type__(self, user_input, command_type):
         command_input = self.command_options[user_input]
         if command_type == 'type':

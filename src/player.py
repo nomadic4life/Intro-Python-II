@@ -3,15 +3,19 @@
 
 
 class Player:
-    def __init__(self, name, current_room):
+    def __init__(self, name, starting_room):
         self.name = name
-        self.current_room = current_room
+        self.current_room = starting_room
 
     def move_to(self, direction):
-        print(self.current_room.items)
         new_room = getattr(self.current_room, f"{direction}_to")
         if(new_room):
             self.current_room = new_room
         else:
-            print(f"{self.name} looks like you can't go in that direction for some reason. not like there is some secret hidden room there.")
-        print(self.current_room.name)
+            self.dialog(type="no room")
+
+    def dialog(self, type=None):
+        if(type == "no room"):
+            print(f"doesn't appear to be anything in that direction")
+        else:
+            print(self.current_room)
