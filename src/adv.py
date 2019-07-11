@@ -7,7 +7,7 @@ from game_commands import Game
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons", ["Treasure"]),
+                     "North of you, the cave mount beckons", items=["Treasure", "pizza"]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),

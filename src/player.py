@@ -8,6 +8,7 @@ class Player:
         self.current_room = current_room
 
     def move_to(self, direction):
+        print(self.current_room.items)
         new_room = getattr(self.current_room, f"{direction}_to")
         if(new_room):
             self.current_room = new_room

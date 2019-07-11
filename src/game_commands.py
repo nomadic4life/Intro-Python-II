@@ -3,7 +3,7 @@ class Game:
 
     def __init__(self, player, room):
         self.player = player
-        self.room = room
+        self.mam = room
         self.command_options = {
             'w': {
                 'type': 'player_action',
