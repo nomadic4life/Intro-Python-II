@@ -1,12 +1,13 @@
 from room import Room
 from player import Player
 from items import Items
+from game_commands import Game
 
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", ["Treasure"]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -35,12 +36,16 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+
 #
 # Main
 #
 
 # Make a new player object that is currently in the 'outside' room.
 player = Player("Frank", room["outside"])
+
+# Game instance
+game = Game(player, room["outside"])
 
 # Write a loop that:
 #
@@ -55,6 +60,12 @@ player = Player("Frank", room["outside"])
 start = True
 while True:
 
+    # user_input = input("press n, w, e, s \n")
+    # game.command(input("press n, w, e, s \n"))
+    # player.move_to(command_options[user_input])
+
+    # print(command_options[incoming])
+
     if(start):
         start = False
         print(
@@ -67,9 +78,14 @@ while True:
         user_input = input(
             f"Alright {player.name} where do you want to go next?\nChoose wisely because it might be your last.\n>>> ")
 
-    if (user_input == "n" or user_input == "s" or user_input == "w" or user_input == "e"):
-        player.move_to(user_input)
-    elif(user_input == "q"):
-        exit()
-    else:
-        print(">  not sure what you are tring to do with that command but you probably want to choose a better command that makes sense\n>  hint: w go west, e go east, n go north, and s go south, or q to just give up.")
+    game.command(user_input)
+
+    # if (user_input == "n" or user_input == "s" or user_input == "w" or user_input == "e"):
+    #     player.move_to(user_input)
+    # elif(user_input == "q"):
+    #     exit()
+    # elif(user_input == "i"):
+    #     print(
+    #         f"items in {player.current_room.name} {player.current_room.items}")
+    # else:
+    #     print(">  not sure what you are tring to do with that command but you probably want to choose a better command that makes sense\n>  hint: w go west, e go east, n go north, and s go south, or q to just give up.")

@@ -7,14 +7,10 @@ class Player:
         self.name = name
         self.current_room = current_room
 
-    def move_to(self, location):
-        if(location == "n" and self.current_room.n_to != None):
-            self.current_room = self.current_room.n_to
-        elif(location == "e" and self.current_room.e_to != None):
-            self.current_room = self.current_room.e_to
-        elif(location == "s" and self.current_room.s_to != None):
-            self.current_room = self.current_room.s_to
-        elif(location == "w" and self.current_room.w_to != None):
-            self.current_room = self.current_room.w_to
+    def move_to(self, direction):
+        new_room = getattr(self.current_room, f"{direction}_to")
+        if(new_room):
+            self.current_room = new_room
         else:
             print(f"{self.name} looks like you can't go in that direction for some reason. not like there is some secret hidden room there.")
+        print(self.current_room.name)
