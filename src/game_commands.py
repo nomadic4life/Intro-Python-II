@@ -24,6 +24,14 @@ class Game:
             'q': {
                 'type': 'quit'
             },
+            'i': {
+                'type': 'player_action',
+                'method': 'check_inventory'
+            },
+            'p': {
+                'type': 'player_action',
+                'method': 'pickup_item'
+            },
         }
 
     def command(self, user_input):
@@ -42,6 +50,7 @@ class Game:
 
     def game_prompt(self):
         self.player.dialog()
+        return input("\n>>> ")
 
     def __command_type__(self, user_input, command_type):
         command_input = self.command_options[user_input]

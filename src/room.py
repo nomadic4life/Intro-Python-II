@@ -3,14 +3,10 @@
 
 
 class Room:
-    def __init__(self, name, description, items=[]):
+    def __init__(self, name, description):
         self.name = name
         self.description = description
-        # if(items == None):
-        #     self.items = []
-        # else:
-        #     self.items = items
-        self.items = items
+        self.items = []
         self.n_to = None
         self.e_to = None
         self.w_to = None
@@ -20,5 +16,9 @@ class Room:
         str = f"""
               \n----------------------------------
               \n{self.name}
-              \n   {self.description}\n"""
+              \n   {self.description}
+              \n{"items: " + ", ".join([item.name for item in self.items])}\n"""
         return str
+
+    def add(self, item):
+        self.items.append(item)

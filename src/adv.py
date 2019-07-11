@@ -7,7 +7,7 @@ from game_commands import Game
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons", items=["Treasure", "pizza"]),
+                     "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -24,6 +24,15 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+# Declare items
+
+item = {
+    "treasure": Items("Treasure", "Pot of gold"),
+    "weapon": Items("Stick", "A long stick to hit villians with"),
+    "food": Items("pie", "A delicious sweet apple pie")
+}
+print(item['weapon'])
+
 
 # Link rooms together
 
@@ -35,6 +44,12 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+# assign items to rooms
+
+room['foyer'].add(item['weapon'])
+room['narrow'].add(item['food'])
+room['treasure'].add(item['treasure'])
 
 
 #
@@ -60,7 +75,5 @@ game = Game(player, room["outside"])
 
 start = True
 while True:
-    game.game_prompt()
-    user_input = input(f"\n>>> ")
-
+    user_input = game.game_prompt()
     game.command(user_input)
